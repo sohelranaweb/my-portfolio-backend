@@ -32,14 +32,15 @@ const getMe = async () => {
   });
   return admin;
 };
-const update = async (payload: Prisma.UserCreateInput): Promise<User> => {
+const update = async (
+  id: number,
+  payload: Prisma.UserUpdateInput
+): Promise<User> => {
   const updatedData = await prisma.user.update({
     where: {
-      id: 1,
+      id,
     },
-    data: {
-      phone: payload.phone,
-    },
+    data: payload,
   });
 
   return updatedData;

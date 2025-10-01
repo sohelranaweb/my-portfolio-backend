@@ -27,7 +27,10 @@ const getMe = async (req: Request, res: Response) => {
 
 const update = async (req: Request, res: Response) => {
   try {
-    const updatedData = await UserService.update(req.body);
+    const updatedData = await UserService.update(
+      Number(req.params.id),
+      req.body
+    );
     res.status(200).json({
       message: "Admin Updated Successfully!!",
       data: updatedData,
